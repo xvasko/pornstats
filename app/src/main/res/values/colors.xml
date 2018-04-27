@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#16222A</color>
+    <color name="colorPrimaryDark">#101920</color>
+    <color name="colorAccent">#c42d2d</color>
+    <color name="colorCircleProgressBar1">#FB8C00</color>
+    <color name="colorCircleProgressBar2">#F57C00</color>
+    <color name="colorCircleProgressBar3">#EF6C00</color>
+    <color name="colorCircleProgressBar4">#E65100</color>
+    <color name="colorCircleProgressBar5">#dd2c00</color>
+    <color name="colorCircleProgressBar6">#d50000</color>
+    <color name="colorCircleProgressBar1Transparent">#78fb8c00</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorWhiteTransparent">#78ffffff</color>
+    <color name="colorGray">#d7d7d7</color>
+    <color name="colorEnd">#1f343e</color>
+</resources>
