@@ -1,5 +1,6 @@
 package com.matejvasko.pornstat;
 
+import android.app.DialogFragment;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -8,11 +9,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -105,11 +108,8 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
         alarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("click");
-//                DialogFragment newFragment = new TimePickerFragment();
-//                newFragment.show(getActivity().getFragmentManager(),"TimePicker");
-                WakefulReceiver wakefulReceiver = new WakefulReceiver();
-                wakefulReceiver.setAlarm(getActivity().getApplicationContext());
+                DialogFragment newFragment = new TimePickerFragment();
+                newFragment.show(getActivity().getFragmentManager(),"TimePicker");
             }
         });
     }

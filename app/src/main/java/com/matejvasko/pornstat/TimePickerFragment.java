@@ -12,10 +12,12 @@ import java.util.Calendar;
 
 
 
-public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener{
+public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
+
+    private WakefulReceiver wakefulReceiver;
 
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState){
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
         //Use the current time as the default values for the time picker
         final Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
@@ -29,10 +31,9 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
     }
 
 
-    public void onTimeSet(TimePicker view, int hourOfDay, int minute){
-        //Do something with the user chosen time
-        //Get reference of host activity (XML Layout File) TextView widget
-        //Set a message for user
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        wakefulReceiver = new WakefulReceiver();
+        wakefulReceiver.setAlarm(getActivity().getApplicationContext(), hourOfDay, minute);
         Toast.makeText(getActivity(), "Hour: " + hourOfDay + " Minute: " + minute, Toast.LENGTH_SHORT).show();
     }
 }
