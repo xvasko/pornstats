@@ -60,7 +60,7 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
 
         pref = getContext().getSharedPreferences("days", MODE_PRIVATE);
         editor = pref.edit();
-        MobileAds.initialize(getContext(), "ca-app-pub-9861673834715515~9871538949");
+//        MobileAds.initialize(getContext(), "ca-app-pub-9861673834715515~9871538949");
         mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(getContext());
         mRewardedVideoAd.setRewardedVideoAdListener(this);
         mRewardedVideoAd.loadAd("ca-app-pub-9861673834715515/6206081511", new AdRequest.Builder().addTestDevice("9F16DA0A735C9B0DBB4412A8FA4B6972").build());

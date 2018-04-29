@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:context=".Tab2">
 
     <LinearLayout
         android:id="@+id/pornpass_streak_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="vertical"
-        android:gravity="center">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
@@ -24,9 +29,9 @@
             android:id="@+id/total_days_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="13"
             android:textColor="@color/colorWhite"
-            android:textSize="64sp"
-            android:text="13"/>
+            android:textSize="64sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -36,97 +41,113 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/pornpass_streak_linear_layout"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pornpass_streak_linear_layout">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:textColor="@color/colorWhite"
             android:text="Total days without using pornpass!"
+            android:textColor="@color/colorWhite"
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/pornpass_days_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorWhite"
             android:text="8"
+            android:textColor="@color/colorWhite"
             android:textSize="64sp" />
     </LinearLayout>
 
 
-    <LinearLayout
-        android:id="@+id/tickets_linear_layout"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/total_streak_linear_layout"
-        android:gravity="center"
-        android:layout_marginTop="100dp"
-        android:orientation="horizontal">
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/total_streak_linear_layout">
 
-        <ImageView
-            android:id="@+id/ticket_image_view"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:src="@drawable/ticket_icon" />
-
-        <TextView
-            android:id="@+id/pornpass_num_text_view"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/tickets_linear_layout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="1"
-            android:textColor="@color/colorWhite"
-            android:textSize="30sp" />
+            android:gravity="center"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="330dp">
 
-        <ImageView
-            android:id="@+id/star_image_view"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:src="@drawable/star_icon" />
+            <ImageView
+                android:id="@+id/ticket_image_view"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/ticket_icon" />
 
-        <TextView
-            android:id="@+id/stars_num_text_view"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/pornpass_num_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="1"
+                android:textColor="@color/colorWhite"
+                android:textSize="30sp" />
+
+            <ImageView
+                android:id="@+id/star_image_view"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/star_icon" />
+
+            <TextView
+                android:id="@+id/stars_num_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="13/100"
+                android:textColor="@color/colorWhite"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/button_linear_layout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="13/100"
-            android:textColor="@color/colorWhite"
-            android:textSize="30sp" />
+            android:layout_below="@+id/tickets_linear_layout"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent">
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/earn_stars_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/alarm_button"
+                android:layout_toStartOf="@+id/alarm_button"
+                android:text="EARN STARS" />
 
-    <LinearLayout
-        android:id="@+id/button_linear_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/tickets_linear_layout"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/earn_stars_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="EARN STARS" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/alarm_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button_linear_layout"
-        android:layout_centerHorizontal="true"
-        android:text="ALARM" />
+            <Button
+                android:id="@+id/alarm_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="18dp"
+                android:text="ALARM" />
+        </RelativeLayout>
+    </RelativeLayout>
 
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

@@ -1,25 +1,22 @@
 package com.matejvasko.pornstat;
 
-import android.Manifest;
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.TaskStackBuilder;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
-import android.support.v4.content.WakefulBroadcastReceiver;
 import android.util.Log;
 
 import java.util.Calendar;
-import java.util.Date;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * When the alarm fires, this WakefulBroadcastReceiver receives the broadcast Intent
@@ -28,6 +25,9 @@ import java.util.Date;
 public class WakefulReceiver extends BroadcastReceiver {
     // provides access to the system alarm services.
     private AlarmManager mAlarmManager;
+    SharedPreferences pref;
+    SharedPreferences.Editor editor;
+
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -40,6 +40,7 @@ public class WakefulReceiver extends BroadcastReceiver {
 //                Log.d("KOKOT", String.format("%s %s (%s)", key, value.toString(), value.getClass().getName()));
 //            }
 //        }
+        setAlarm(context,true);
 
     }
 
@@ -52,11 +53,11 @@ public class WakefulReceiver extends BroadcastReceiver {
 
                 NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, "1")
                         .setSmallIcon(R.drawable.star_icon)
-                        .setContentTitle("title")
-                        .setContentText("content")
+                        .setContentTitle("Submit your progress!")
+                        .setContentText("Don't forget to be honest!")
                         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                        .setContentIntent(pendingIntent);
-                //      .setAutoCancel(true);
+                        .setContentIntent(pendingIntent)
+                        .setAutoCancel(true);
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     CharSequence name = "channel name";
@@ -70,30 +71,56 @@ public class WakefulReceiver extends BroadcastReceiver {
                 notificationManager.notify(1, mBuilder.build());
     }
 
-    public void setAlarm(Context context, int hourOfDay, int minute) {
+    public void setAlarm(Context context, boolean cycle) {
         cancelAlarm(context);
+
+        pref = context.getSharedPreferences("days", MODE_PRIVATE);
+        editor = pref.edit();
+
+        int hourOfDay = pref.getInt("hour", -1);
+        int minute    = pref.getInt("minute", -1);
+
+        System.out.println(hourOfDay);
+        System.out.println(minute);
+
+        if (hourOfDay < 0 || minute < 0) {
+            System.out.println("EEEEEEEEEEEEEERORRER");
+            return;
+        }
 
         mAlarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, WakefulReceiver.class);
-        PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 1, intent, 0);
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-//        calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
-//        calendar.set(Calendar.MINUTE, minute);
-//        calendar.set(Calendar.SECOND, 00);
-//        calendar.set(Calendar.MILLISECOND, 00);
-        calendar.add(Calendar.SECOND, 2);
+        long alarm;
 
-        mAlarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmIntent);
+        if (!cycle) {
 
-        // Enable {@code BootReceiver} to automatically restart when the
-        // device is rebooted.
-        //// TODO: you may need to reference the context by ApplicationActivity.class
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(System.currentTimeMillis());
+            calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+            calendar.set(Calendar.MINUTE, minute);
+            calendar.set(Calendar.SECOND, 00);
+            calendar.set(Calendar.MILLISECOND, 00);
+
+            alarm = calendar.getTimeInMillis();
+            long now = System.currentTimeMillis();
+
+            if (alarm < now) {
+                System.out.println("SET IN PAST");
+                alarm += AlarmManager.INTERVAL_DAY;
+            } else {
+                System.out.println("SET IN FUTURE");
+            }
+        } else {
+            alarm = System.currentTimeMillis() + AlarmManager.INTERVAL_DAY;
+        }
+
+        mAlarmManager.setExact(AlarmManager.RTC_WAKEUP, alarm, alarmIntent);
+
         ComponentName receiver = new ComponentName(context, BootReceiver.class);
         PackageManager pm = context.getPackageManager();
         pm.setComponentEnabledSetting(receiver, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
-        System.out.println("SET ALARM");
     }
 
     /**
@@ -107,7 +134,7 @@ public class WakefulReceiver extends BroadcastReceiver {
 
         mAlarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, WakefulReceiver.class);
-        PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 1, intent, 0);
 
         mAlarmManager.cancel(alarmIntent);
 
