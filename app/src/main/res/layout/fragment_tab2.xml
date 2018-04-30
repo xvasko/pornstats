@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@drawable/background"
     tools:context=".Tab2">
 
     <LinearLayout
@@ -135,17 +135,20 @@
                 android:id="@+id/earn_stars_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/alarm_button"
-                android:layout_toStartOf="@+id/alarm_button"
                 android:text="EARN STARS" />
 
             <Button
+                android:layout_marginStart="10dp"
                 android:id="@+id/alarm_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="18dp"
-                android:text="ALARM" />
+                android:layout_centerInParent="true"
+                android:minWidth="0dp"
+                android:textSize="32sp"
+                android:text="@string/icon_n"
+                android:layout_alignTop="@+id/earn_stars_button"
+                android:layout_alignBottom="@+id/earn_stars_button"
+                android:layout_toEndOf="@+id/earn_stars_button" />
         </RelativeLayout>
     </RelativeLayout>
 

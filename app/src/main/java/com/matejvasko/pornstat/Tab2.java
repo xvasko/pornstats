@@ -47,6 +47,8 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
     SharedPreferences.Editor editor;
     private RewardedVideoAd mRewardedVideoAd;
 
+    IconManager iconManager;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -57,6 +59,8 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        iconManager = new IconManager();
 
         pref = getContext().getSharedPreferences("days", MODE_PRIVATE);
         editor = pref.edit();
@@ -105,6 +109,7 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
         starsNum.setText(Integer.toString(pref.getInt("stars", 0)) + "/100");
 
         alarm        = getView().findViewById(R.id.alarm_button);
+        alarm.setTypeface(iconManager.getIcons("fonts/MaterialIcons-Regular.ttf", getContext()));
         alarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

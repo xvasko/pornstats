@@ -26,12 +26,10 @@
     </style>
 
     <!-- Define your custom dialog theme here extending from base -->
-    <style name="TimePickerDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+    <style name="TimePickerDialogThemeParent" parent="Theme.AppCompat.Light.Dialog">
         <!-- Define color properties as desired -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">#059c23</item>
-        <item name="android:textColorHighlight">#c60404</item>
-        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorCircleProgressBar1</item>
         <item name="colorControlNormal">@color/colorCircleProgressBar1</item>
         <!-- Define window properties as desired -->
         <item name="android:windowNoTitle">false</item>
@@ -41,5 +39,34 @@
         <item name="android:windowCloseOnTouchOutside">true</item>
     </style>
 
+    <style name="TimePickerDialogTheme1" parent="TimePickerDialogThemeParent">
+        <item name="colorAccent">@color/colorCircleProgressBar1</item>
+        <item name="colorControlNormal">@color/colorCircleProgressBar1</item>
+    </style>
+
+    <style name="TimePickerDialogTheme2" parent="TimePickerDialogThemeParent">
+        <item name="colorAccent">@color/colorCircleProgressBar2</item>
+        <item name="colorControlNormal">@color/colorCircleProgressBar2</item>
+    </style>
+
+    <style name="TimePickerDialogTheme3" parent="TimePickerDialogThemeParent">
+        <item name="colorAccent">@color/colorCircleProgressBar3</item>
+        <item name="colorControlNormal">@color/colorCircleProgressBar3</item>
+    </style>
+
+    <style name="TimePickerDialogTheme4" parent="TimePickerDialogThemeParent">
+        <item name="colorAccent">@color/colorCircleProgressBar4</item>
+        <item name="colorControlNormal">@color/colorCircleProgressBar4</item>
+    </style>
+
+    <style name="TimePickerDialogTheme5" parent="TimePickerDialogThemeParent">
+        <item name="colorAccent">@color/colorCircleProgressBar5</item>
+        <item name="colorControlNormal">@color/colorCircleProgressBar5</item>
+    </style>
+
+    <style name="TimePickerDialogTheme6" parent="TimePickerDialogThemeParent">
+        <item name="colorAccent">@color/colorCircleProgressBar6</item>
+        <item name="colorControlNormal">@color/colorCircleProgressBar6</item>
+    </style>
 
 </resources>

@@ -32,16 +32,7 @@ public class WakefulReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         showNotification(context.getApplicationContext());
-
-//        Bundle bundle = intent.getExtras();
-//        if (bundle != null) {
-//            for (String key : bundle.keySet()) {
-//                Object value = bundle.get(key);
-//                Log.d("KOKOT", String.format("%s %s (%s)", key, value.toString(), value.getClass().getName()));
-//            }
-//        }
         setAlarm(context,true);
-
     }
 
     public void showNotification(Context context) {
@@ -54,14 +45,14 @@ public class WakefulReceiver extends BroadcastReceiver {
                 NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, "1")
                         .setSmallIcon(R.drawable.star_icon)
                         .setContentTitle("Submit your progress!")
-                        .setContentText("Don't forget to be honest!")
+                        .setColor(context.getResources().getColor(R.color.colorCircleProgressBar1Transparent))
                         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                         .setContentIntent(pendingIntent)
                         .setAutoCancel(true);
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    CharSequence name = "channel name";
-                    String description ="channel description";
+                    CharSequence name = "Notification";
+                    String description ="";
                     int importance = NotificationManager.IMPORTANCE_HIGH;
                     NotificationChannel channel = new NotificationChannel("1", name, importance);
                     channel.setDescription(description);
@@ -84,7 +75,6 @@ public class WakefulReceiver extends BroadcastReceiver {
         System.out.println(minute);
 
         if (hourOfDay < 0 || minute < 0) {
-            System.out.println("EEEEEEEEEEEEEERORRER");
             return;
         }
 

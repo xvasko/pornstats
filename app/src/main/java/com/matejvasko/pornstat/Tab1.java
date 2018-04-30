@@ -267,6 +267,7 @@ public class Tab1 extends Fragment {
         circleProgressBar4.setProgressWithAnimation(0);
         circleProgressBar5.setProgressWithAnimation(0);
         circleProgressBar6.setProgressWithAnimation(0);
+        MainActivity.updateSelectedTabIndicatorColor(getResources(), pref.getInt("totalDays", 0));
     }
 
     private void addSuccessfulDay() {
@@ -304,7 +305,7 @@ public class Tab1 extends Fragment {
         System.out.println("MIDNIGHT:" + pref.getLong("midnight", 0));
         showTomorrowUI(true);
 
-
+        MainActivity.updateSelectedTabIndicatorColor(getResources(), pref.getInt("totalDays", 0));
     }
 
     private void showTodayUI(){

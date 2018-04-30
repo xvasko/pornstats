@@ -30,8 +30,24 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         pref = getActivity().getSharedPreferences("days", MODE_PRIVATE);
         editor = pref.edit();
 
+        int totalDays = pref.getInt("totalDays", 0);
+        int timePickerDialogTheme;
+        if (totalDays <= 3) {
+            timePickerDialogTheme = R.style.TimePickerDialogTheme1;
+        } else if (totalDays <= 8) {
+            timePickerDialogTheme = R.style.TimePickerDialogTheme2;
+        } else if (totalDays <= 15) {
+            timePickerDialogTheme = R.style.TimePickerDialogTheme3;
+        } else if (totalDays <= 29) {
+            timePickerDialogTheme = R.style.TimePickerDialogTheme4;
+        } else if (totalDays <= 50) {
+            timePickerDialogTheme = R.style.TimePickerDialogTheme5;
+        } else {
+            timePickerDialogTheme = R.style.TimePickerDialogTheme6;
+        }
+
         //Create and return a new instance of TimePickerDialog
-        TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), R.style.TimePickerDialogTheme,this, hour, minute,
+        TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), timePickerDialogTheme,this, hour, minute,
                 DateFormat.is24HourFormat(getActivity()));
 
         return timePickerDialog;
@@ -44,6 +60,13 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         editor.commit();
         wakefulReceiver = new WakefulReceiver();
         wakefulReceiver.setAlarm(getActivity().getApplicationContext(),false);
-        Toast.makeText(getActivity(), "Hour: " + hourOfDay + " Minute: " + minute, Toast.LENGTH_SHORT).show();
+        String minuteFormatted;
+        if (minute < 10) {
+            minuteFormatted = "0" + minute;
+        } else {
+            minuteFormatted = "" + minute;
+        }
+
+        Toast.makeText(getActivity(), "Notification set to " + hourOfDay + ":" + minuteFormatted, Toast.LENGTH_SHORT).show();
     }
 }
