@@ -3,8 +3,10 @@ package com.matejvasko.pornstat;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.text.format.DateFormat;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -49,6 +51,8 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         //Create and return a new instance of TimePickerDialog
         TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), timePickerDialogTheme,this, hour, minute,
                 DateFormat.is24HourFormat(getActivity()));
+        //timePickerDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", timePickerDialog);
+        //timePickerDialog.getButton(DialogInterface.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.colorWhite));
 
         return timePickerDialog;
     }

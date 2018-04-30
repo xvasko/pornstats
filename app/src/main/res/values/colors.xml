@@ -9,6 +9,7 @@
     <color name="colorCircleProgressBar4">#E65100</color>
     <color name="colorCircleProgressBar5">#dd2c00</color>
     <color name="colorCircleProgressBar6">#d50000</color>
+    <color name="colorNotification">#ff6d00</color>
     <color name="colorCircleProgressBar1Transparent">#78fb8c00</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorWhiteTransparent">#78ffffff</color>

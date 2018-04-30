@@ -43,9 +43,9 @@ public class WakefulReceiver extends BroadcastReceiver {
                 PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
 
                 NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, "1")
-                        .setSmallIcon(R.drawable.star_icon)
+                        .setSmallIcon(R.drawable.app_notification_icon)
                         .setContentTitle("Submit your progress!")
-                        .setColor(context.getResources().getColor(R.color.colorCircleProgressBar1Transparent))
+                        .setColor(context.getResources().getColor(R.color.colorNotification))
                         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                         .setContentIntent(pendingIntent)
                         .setAutoCancel(true);
