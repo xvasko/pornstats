@@ -20,7 +20,6 @@ public class BootReceiver extends BroadcastReceiver {
             //// TODO: use calendar.add(Calendar.SECOND,MINUTE,HOUR, int);
             calendar.add(Calendar.SECOND, 20);
 
-            Toast.makeText(context.getApplicationContext(), "START", Toast.LENGTH_LONG).show();
             //ALWAYS recompute the calendar after using add, set, roll
             wakefulReceiver = new WakefulReceiver();
             wakefulReceiver.setAlarm(context.getApplicationContext(),  false);

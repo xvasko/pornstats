@@ -64,10 +64,9 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
 
         pref = getContext().getSharedPreferences("days", MODE_PRIVATE);
         editor = pref.edit();
-//        MobileAds.initialize(getContext(), "ca-app-pub-9861673834715515~9871538949");
         mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(getContext());
         mRewardedVideoAd.setRewardedVideoAdListener(this);
-        mRewardedVideoAd.loadAd("ca-app-pub-9861673834715515/6206081511", new AdRequest.Builder().addTestDevice("9F16DA0A735C9B0DBB4412A8FA4B6972").build());
+        mRewardedVideoAd.loadAd("ca-app-pub-9861673834715515/6206081511", new AdRequest.Builder().build());
 
         prepareUI();
 
@@ -76,7 +75,7 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
-            mRewardedVideoAd.loadAd("ca-app-pub-9861673834715515/6206081511", new AdRequest.Builder().addTestDevice("9F16DA0A735C9B0DBB4412A8FA4B6972").build());
+            mRewardedVideoAd.loadAd("ca-app-pub-9861673834715515/6206081511", new AdRequest.Builder().build());
         } else {
         }
     }
@@ -149,13 +148,13 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
         editor.commit();
 
         if (pref.getInt("stars", 0) >= 100) {
-            editor.putInt("pornpasses", pref.getInt("pornpasses", 0) + 1);
+            editor.putInt("pornpasses", pref.getInt("pornpasses", 1) + 1);
             editor.putInt("stars", pref.getInt("stars", 0) % 100);
             editor.commit();
         }
-        pornpassNum.setText(Integer.toString(pref.getInt("pornpasses", 0)));
+        pornpassNum.setText(Integer.toString(pref.getInt("pornpasses", 1)));
         starsNum.setText(Integer.toString(pref.getInt("stars", 0)) + "/100");
-        Toast.makeText(getContext(), String.format("Ziskali ste %d hviezdiciek!", rewardItem.getAmount()), Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(), String.format("You have received %d stars!", rewardItem.getAmount()), Toast.LENGTH_LONG).show();
     }
 
     @Override

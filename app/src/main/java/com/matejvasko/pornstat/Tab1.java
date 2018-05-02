@@ -117,23 +117,12 @@ public class Tab1 extends Fragment {
         MobileAds.initialize(getContext(), "ca-app-pub-9861673834715515~9871538949");
 
         mAdView = getActivity().findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice("9F16DA0A735C9B0DBB4412A8FA4B6972").build();
+        AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
     }
 
     private void prepareUI() {
-        travel = getView().findViewById(R.id.travel);
-        travel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editor.putBoolean("wasAnsweredToday", false);
-                editor.commit();
-                showTodayUI();
-            }
-        });
-
-
         question = getView().findViewById(R.id.question_text_view);
         date = getView().findViewById(R.id.date_text_view);
         daysOfCurrentChallenge = getView().findViewById(R.id.days_of_current_challenge_text_view);
