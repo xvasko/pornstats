@@ -112,7 +112,7 @@ public class Tab1 extends Fragment {
         MobileAds.initialize(getContext(), "ca-app-pub-9861673834715515~9871538949");
 
         mAdView = getActivity().findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice("9F16DA0A735C9B0DBB4412A8FA4B6972").build();
+        AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
     }
