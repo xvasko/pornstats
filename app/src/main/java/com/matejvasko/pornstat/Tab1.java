@@ -2,7 +2,6 @@ package com.matejvasko.pornstat;
 
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,7 +10,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,10 +21,8 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -46,7 +42,6 @@ public class Tab1 extends Fragment {
     CircleProgressBar circleProgressBar6;
     Button yesButton;
     Button noButton;
-    Button travel;
 
     Handler handle = new Handler();
     int[] days    = new int[] {0, 0, 0,  0,  0,  0};
@@ -117,7 +112,7 @@ public class Tab1 extends Fragment {
         MobileAds.initialize(getContext(), "ca-app-pub-9861673834715515~9871538949");
 
         mAdView = getActivity().findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("9F16DA0A735C9B0DBB4412A8FA4B6972").build();
         mAdView.loadAd(adRequest);
 
     }
@@ -304,10 +299,10 @@ public class Tab1 extends Fragment {
         // get yesterday date
         myDate.setTime(myDate.getTime() - TimeUnit.DAYS.toMillis(1));
         date.setText(df.format(myDate));
-        yesButton.setEnabled(true);
-        yesButton.setTextColor(getResources().getColor(R.color.colorWhite));
-        noButton.setEnabled(true);
-        noButton.setTextColor(getResources().getColor(R.color.colorWhite));
+        yesButton.setVisibility(View.VISIBLE);
+//        yesButton.setTextColor(getResources().getColor(R.color.colorWhite));
+        noButton.setVisibility(View.VISIBLE);
+//        noButton.setTextColor(getResources().getColor(R.color.colorWhite));
     }
 
     private void showTomorrowUI(boolean wasSuccessful){
@@ -319,10 +314,10 @@ public class Tab1 extends Fragment {
         }
         date.setText("Come back tomorrow");
         question.setText(text);
-        yesButton.setEnabled(false);
-        yesButton.setTextColor(getResources().getColor(R.color.colorWhiteTransparent));
-        noButton.setEnabled(false);
-        noButton.setTextColor(getResources().getColor(R.color.colorWhiteTransparent));
+        yesButton.setVisibility(View.INVISIBLE);
+//        yesButton.setTextColor(getResources().getColor(R.color.colorWhiteTransparent));
+        noButton.setVisibility(View.INVISIBLE);
+//        noButton.setTextColor(getResources().getColor(R.color.colorWhiteTransparent));
     }
 
     private void addSuccessfulDay(final int i) {

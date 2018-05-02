@@ -1,21 +1,13 @@
 package com.matejvasko.pornstat;
 
 import android.app.DialogFragment;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.app.TaskStackBuilder;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,11 +29,13 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
 
     Button earnStars;
     Button alarm;
+    Button alarmCancel;
 
     static TextView totalDays;
     static TextView pornpassDays;
     static TextView pornpassNum;
     static TextView starsNum;
+    static TextView notification;
 
     SharedPreferences pref;
     SharedPreferences.Editor editor;
@@ -76,7 +70,6 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
             mRewardedVideoAd.loadAd("ca-app-pub-9861673834715515/6206081511", new AdRequest.Builder().build());
-        } else {
         }
     }
 
@@ -85,6 +78,7 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
         pornpassDays = getView().findViewById(R.id.pornpass_days_text_view);
         pornpassNum  = getView().findViewById(R.id.pornpass_num_text_view);
         starsNum     = getView().findViewById(R.id.stars_num_text_view);
+        notification = getView().findViewById(R.id.notification_text_view);
 
         earnStars    = getView().findViewById(R.id.earn_stars_button);
         earnStars.setEnabled(false);
@@ -116,6 +110,40 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
                 newFragment.show(getActivity().getFragmentManager(),"TimePicker");
             }
         });
+        alarmCancel = getView().findViewById(R.id.cancel_alarm_button);
+        alarmCancel.setTypeface(iconManager.getIcons("fonts/MaterialIcons-Regular.ttf", getContext()));
+        alarmCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                WakefulReceiver wakefulReceiver = new WakefulReceiver();
+                wakefulReceiver.cancelAlarm(getActivity().getApplicationContext());
+                editor.putInt("hour", -2);
+                editor.putInt("minute", -2);
+                editor.commit();
+                notification.setText("No notification set up");
+            }
+        });
+
+        updateNotificationTextView(getContext(), pref);
+    }
+
+    public static void updateNotificationTextView(Context context, SharedPreferences pref) {
+        int hour = pref.getInt("hour", -1);
+        int minute = pref.getInt("minute", -1);
+
+        if (hour == -1 || minute == -1) {
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putInt("hour", 11);
+            editor.putInt("minute", 0);
+            editor.commit();
+            WakefulReceiver wakefulReceiver = new WakefulReceiver();
+            wakefulReceiver.setAlarm(context,false);
+            notification.setText("Notification set to " + Utils.getTimeInCorrectFormat(context, pref.getInt("hour", -1), pref.getInt("minute", -1)));
+        } else if (hour == -2 || minute == -2) {
+            notification.setText("No notification set up");
+        } else {
+            notification.setText("Notification set to " + Utils.getTimeInCorrectFormat(context, hour, minute));
+        }
     }
 
 

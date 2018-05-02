@@ -48,11 +48,8 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
             timePickerDialogTheme = R.style.TimePickerDialogTheme6;
         }
 
-        //Create and return a new instance of TimePickerDialog
         TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), timePickerDialogTheme,this, hour, minute,
                 DateFormat.is24HourFormat(getActivity()));
-        //timePickerDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", timePickerDialog);
-        //timePickerDialog.getButton(DialogInterface.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.colorWhite));
 
         return timePickerDialog;
     }
@@ -64,13 +61,8 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         editor.commit();
         wakefulReceiver = new WakefulReceiver();
         wakefulReceiver.setAlarm(getActivity().getApplicationContext(),false);
-        String minuteFormatted;
-        if (minute < 10) {
-            minuteFormatted = "0" + minute;
-        } else {
-            minuteFormatted = "" + minute;
-        }
 
-        Toast.makeText(getActivity(), "Notification set to " + hourOfDay + ":" + minuteFormatted, Toast.LENGTH_SHORT).show();
+
+        Tab2.updateNotificationTextView(getActivity().getApplicationContext(), pref);
     }
 }

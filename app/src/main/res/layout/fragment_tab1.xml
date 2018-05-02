@@ -82,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/main_relative_layout"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:gravity="center_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -257,67 +257,78 @@
 
     </LinearLayout>
 
+
     <LinearLayout
-        android:id="@+id/question_linear_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/small_progress_bars_linear_layout"
-        android:gravity="center"
+        android:id="@+id/buttons_and_question_layout"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/small_progress_bars_linear_layout">
-
-        <TextView
-            android:id="@+id/question_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:text="Did you watch porn yesterday?"
-            android:textColor="@color/colorWhite"
-            android:textSize="26sp" />
-
-        <TextView
-            android:id="@+id/date_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="23.4.2018"
-            android:textColor="@color/colorGray"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/buttons_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/question_linear_layout"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginStart="2dp"
         android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
         app:layout_constraintBottom_toTopOf="@+id/adView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/question_linear_layout">
+        app:layout_constraintTop_toBottomOf="@+id/small_progress_bars_linear_layout">
 
-        <Button
-            android:id="@+id/yes_button"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/question_linear_layout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="4dp"
-            android:text="YES" />
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/small_progress_bars_linear_layout"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/small_progress_bars_linear_layout">
 
-        <Button
-            android:id="@+id/no_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="4dp"
-            android:text="NO" />
+            <TextView
+                android:id="@+id/question_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="Did you watch porn yesterday?"
+                android:textColor="@color/colorWhite"
+                android:textSize="26sp" />
+
+            <TextView
+                android:id="@+id/date_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="23.4.2018"
+                android:textColor="@color/colorGray"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:id="@+id/buttons_layout"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/yes_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="4dp"
+                android:text="YES" />
+
+            <Button
+                android:id="@+id/no_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="4dp"
+                android:text="NO" />
+        </LinearLayout>
+
     </LinearLayout>
 
 

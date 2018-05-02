@@ -65,6 +65,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -131,26 +132,59 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent">
 
-            <Button
-                android:id="@+id/earn_stars_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="EARN STARS" />
 
             <Button
-                android:layout_marginStart="10dp"
+
                 android:id="@+id/alarm_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:minWidth="0dp"
-                android:textSize="32sp"
                 android:text="@string/icon_n"
-                android:layout_alignTop="@+id/earn_stars_button"
+                android:textSize="32sp" />
+
+
+            <Button
+                android:id="@+id/earn_stars_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/alarm_button"
+                android:layout_alignTop="@+id/alarm_button"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/alarm_button"
+                android:text="EARN STARS" />
+
+            <Button
+                android:id="@+id/cancel_alarm_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/earn_stars_button"
-                android:layout_toEndOf="@+id/earn_stars_button" />
+                android:layout_alignTop="@+id/earn_stars_button"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/earn_stars_button"
+                android:minWidth="0dp"
+                android:text="@string/icon_n_off"
+                android:textSize="32sp" />
         </RelativeLayout>
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/notification_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Notification set to 8:30"
+        android:textColor="@color/colorGray"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintVertical_bias="0.100000024" />
 
 
 </android.support.constraint.ConstraintLayout>
