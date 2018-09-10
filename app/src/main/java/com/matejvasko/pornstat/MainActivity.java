@@ -15,13 +15,11 @@ public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentIn
     static private TabLayout tabLayout;
 
     SharedPreferences pref;
-    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         pref = getApplicationContext().getSharedPreferences("days", MODE_PRIVATE);
 
@@ -73,7 +71,6 @@ public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentIn
             tabLayout.setSelectedTabIndicatorColor(resources.getColor(R.color.colorCircleProgressBar6));
         }
     }
-
 
     @Override
     public void onFragmentInteraction(Uri uri) {

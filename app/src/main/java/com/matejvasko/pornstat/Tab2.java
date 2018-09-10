@@ -80,7 +80,7 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
         starsNum     = getView().findViewById(R.id.stars_num_text_view);
         notification = getView().findViewById(R.id.notification_text_view);
 
-        earnStars    = getView().findViewById(R.id.earn_stars_button);
+        earnStars = getView().findViewById(R.id.earn_stars_button);
         earnStars.setEnabled(false);
         earnStars.setTextColor(getResources().getColor(R.color.colorWhiteTransparent));
         earnStars.setOnClickListener(new View.OnClickListener() {
@@ -101,7 +101,7 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
         pornpassNum.setText(Integer.toString(pref.getInt("pornpasses", 1)));
         starsNum.setText(Integer.toString(pref.getInt("stars", 0)) + "/100");
 
-        alarm        = getView().findViewById(R.id.alarm_button);
+        alarm = getView().findViewById(R.id.alarm_button);
         alarm.setTypeface(iconManager.getIcons("fonts/MaterialIcons-Regular.ttf", getContext()));
         alarm.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -85,14 +85,7 @@ public class Tab1 extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        starsEarnedLayout = getActivity().findViewById(R.id.stars_earned_layout);
         ViewCompat.setTranslationZ(starsEarnedLayout, 1);
-        starsEarnedLayout.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return true;
-            }
-        });
 
         pref = getContext().getSharedPreferences("days", MODE_PRIVATE);
         editor = pref.edit();
