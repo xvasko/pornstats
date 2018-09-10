@@ -13,6 +13,7 @@
     <color name="colorCircleProgressBar1Transparent">#78fb8c00</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorWhiteTransparent">#78ffffff</color>
+    <color name="colorBlackTransparent">#b4000000</color>
     <color name="colorGray">#d7d7d7</color>
     <color name="colorEnd">#1f343e</color>
 </resources>

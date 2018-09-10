@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AlertDialog;
 import android.text.Html;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -42,6 +45,7 @@ public class Tab1 extends Fragment {
     CircleProgressBar circleProgressBar6;
     Button yesButton;
     Button noButton;
+    ConstraintLayout starsEarnedLayout;
 
     Handler handle = new Handler();
     int[] days    = new int[] {0, 0, 0,  0,  0,  0};
@@ -81,6 +85,15 @@ public class Tab1 extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        starsEarnedLayout = getActivity().findViewById(R.id.stars_earned_layout);
+        ViewCompat.setTranslationZ(starsEarnedLayout, 1);
+        starsEarnedLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
+
         pref = getContext().getSharedPreferences("days", MODE_PRIVATE);
         editor = pref.edit();
         wasAnsweredToday = pref.getBoolean("wasAnsweredToday", false);
@@ -112,7 +125,7 @@ public class Tab1 extends Fragment {
         MobileAds.initialize(getContext(), "ca-app-pub-9861673834715515~9871538949");
 
         mAdView = getActivity().findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("9F16DA0A735C9B0DBB4412A8FA4B6972").build();
         mAdView.loadAd(adRequest);
 
     }
