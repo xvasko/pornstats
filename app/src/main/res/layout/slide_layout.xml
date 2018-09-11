@@ -25,7 +25,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/a" />
+            app:srcCompat="@drawable/ic_a" />
 
         <TextView
             android:id="@+id/slide_heading"
@@ -42,22 +42,51 @@
             app:layout_constraintTop_toBottomOf="@+id/slide_image" />
 
         <TextView
-            android:id="@+id/slide_description"
+            android:id="@+id/slide_description1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginTop="20dp"
-            android:lineSpacingExtra="8dp"
-            android:text="Submit your progress for every day.\nYour first goal is to reach 3 days without porn. "
+            android:layout_marginTop="10dp"
+            android:padding="6dp"
+            android:text="Sample text."
             android:textAlignment="center"
             android:textColor="@color/colorGray"
             android:textSize="16sp"
-            android:padding="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/slide_heading"
             app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/slide_description2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:padding="6dp"
+            android:text="Sample text."
+            android:textAlignment="center"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/slide_description1" />
+
+        <TextView
+            android:id="@+id/slide_description3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:padding="6dp"
+            android:text="Sample text."
+            android:textAlignment="center"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/slide_description2" />
     </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

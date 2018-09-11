@@ -49,10 +49,18 @@ public class OnBoardingActivity extends AppCompatActivity {
 
         addDotsIndicator(0);
 
+        final Intent intent = new Intent(getBaseContext(), MainActivity.class);
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mSlideViewPager.setCurrentItem(mCurrentPage + 1);
+                if (mCurrentPage == mDots.length - 1) {
+                    editor.putBoolean("isNewUser", false);
+                    editor.apply();
+                    startActivity(intent);
+                } else {
+                    mSlideViewPager.setCurrentItem(mCurrentPage + 1);
+                }
+
             }
         });
 
@@ -62,16 +70,6 @@ public class OnBoardingActivity extends AppCompatActivity {
                 mSlideViewPager.setCurrentItem(mCurrentPage - 1);
             }
         });
-
-        final Intent intent = new Intent(getBaseContext(), MainActivity.class);
-//        finishButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                editor.putBoolean("isNewUser", false);
-//                editor.apply();
-//                startActivity(intent);
-//            }
-//        });
     }
 
     public void addDotsIndicator(int position) {
@@ -94,7 +92,6 @@ public class OnBoardingActivity extends AppCompatActivity {
     private void prepareUI() {
         mSlideViewPager     = findViewById(R.id.slide_view_pager);
         mBottomLinearLayout = findViewById(R.id.bottom_linear_layout);
-//        finishButton        = findViewById(R.id.finish_button);
         mBackButton = findViewById(R.id.back_button);
         mNextButton = findViewById(R.id.next_button);
     }

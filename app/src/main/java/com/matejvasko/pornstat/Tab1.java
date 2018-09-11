@@ -45,7 +45,6 @@ public class Tab1 extends Fragment {
     CircleProgressBar circleProgressBar6;
     Button yesButton;
     Button noButton;
-    ConstraintLayout starsEarnedLayout;
 
     Handler handle = new Handler();
     int[] days    = new int[] {0, 0, 0,  0,  0,  0};
@@ -85,8 +84,6 @@ public class Tab1 extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ViewCompat.setTranslationZ(starsEarnedLayout, 1);
-
         pref = getContext().getSharedPreferences("days", MODE_PRIVATE);
         editor = pref.edit();
         wasAnsweredToday = pref.getBoolean("wasAnsweredToday", false);
@@ -118,7 +115,7 @@ public class Tab1 extends Fragment {
         MobileAds.initialize(getContext(), "ca-app-pub-9861673834715515~9871538949");
 
         mAdView = getActivity().findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice("9F16DA0A735C9B0DBB4412A8FA4B6972").build();
+        AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
     }

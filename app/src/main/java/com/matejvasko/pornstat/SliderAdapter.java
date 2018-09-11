@@ -15,15 +15,21 @@ public class SliderAdapter extends PagerAdapter {
     Context context;
     LayoutInflater layoutInflater;
 
+    ImageView slideImage;
+    TextView  slideHeading;
+    TextView  slideDescription1;
+    TextView  slideDescription2;
+    TextView  slideDescription3;
+
     public SliderAdapter(Context context) {
         this.context = context;
     }
 
     public int[] slideImages = {
-            R.drawable.a,
-            R.drawable.b,
-            R.drawable.c,
-            R.drawable.b,
+            R.drawable.ic_a,
+            R.drawable.ic_b,
+            R.drawable.ic_c,
+            R.drawable.ic_d,
     };
 
     public String[] slideHeadings = {
@@ -33,11 +39,25 @@ public class SliderAdapter extends PagerAdapter {
             "GOOD LUCK!"
     };
 
-    public String[] slideDescriptions = {
-            "Thank you for downloading PornStats.\nLet’s get you started!",
-            "Submit your progress for every day.\nYour first goal is to reach 3 days without porn.\n",
-            "Everyone has days of weakness.\nIf you fail, you can still keep your progress with pornpass.\nCollect 100 stars to get 1 pornpass.\n",
-            "Stay strong and don’t forget to be honest.\nRemember, only person you will be lying to is you."
+    public String[] slideDescriptions1 = {
+            "Thank you for downloading PornStats.",
+            "Submit your progress for every day.",
+            "Everyone has days of weakness.",
+            "Stay strong and don’t forget to be honest."
+    };
+
+    public String[] slideDescriptions2 = {
+            "Let’s get you started!",
+            "Your first goal is to reach 3 days without \nwatching porn.",
+            "If you fail, you can still keep your progress with \npornpass.",
+            "Remember, only person you will be lying to is you."
+    };
+
+    public String[] slideDescriptions3 = {
+            "",
+            "",
+            "Collect 100 stars to get 1 pornpass.\n",
+            ""
     };
 
     @Override
@@ -56,13 +76,17 @@ public class SliderAdapter extends PagerAdapter {
         layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.slide_layout, container, false);
 
-        ImageView slideImage       = view.findViewById(R.id.slide_image);
-        TextView  slideHeading     = view.findViewById(R.id.slide_heading);
-        TextView  slideDescription = view.findViewById(R.id.slide_description);
+        slideImage       = view.findViewById(R.id.slide_image);
+        slideHeading     = view.findViewById(R.id.slide_heading);
+        slideDescription1 = view.findViewById(R.id.slide_description1);
+        slideDescription2 = view.findViewById(R.id.slide_description2);
+        slideDescription3 = view.findViewById(R.id.slide_description3);
 
         slideImage.setImageResource(slideImages[position]);
         slideHeading.setText(slideHeadings[position]);
-        slideDescription.setText(slideDescriptions[position]);
+        slideDescription1.setText(slideDescriptions1[position]);
+        slideDescription2.setText(slideDescriptions2[position]);
+        slideDescription3.setText(slideDescriptions3[position]);
 
         container.addView(view);
 

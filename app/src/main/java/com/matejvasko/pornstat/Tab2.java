@@ -88,11 +88,11 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
             public void onClick(View view) {
                 earnStars.setEnabled(false);
                 earnStars.setTextColor(getResources().getColor(R.color.colorWhiteTransparent));
-                if (mRewardedVideoAd.isLoaded()) {
+//                if (mRewardedVideoAd.isLoaded()) {
                     mRewardedVideoAd.show();
-                } else {
-                    System.out.println("add is not loaded");
-                }
+//                } else {
+//                    System.out.println("add is not loaded");
+//                }
             }
         });
 
