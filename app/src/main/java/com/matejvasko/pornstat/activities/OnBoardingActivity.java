@@ -1,4 +1,4 @@
-package com.matejvasko.pornstat;
+package com.matejvasko.pornstat.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,16 +8,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.matejvasko.pornstat.R;
+import com.matejvasko.pornstat.adapters.SliderAdapter;
 
 public class OnBoardingActivity extends AppCompatActivity {
 
     ViewPager mSlideViewPager;
     LinearLayout mBottomLinearLayout;
 
-    Button finishButton;
     TextView mBackButton;
     TextView mNextButton;
     SharedPreferences pref;

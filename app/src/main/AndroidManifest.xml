@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SplashScreen"
+            android:name=".activities.SplashScreenActivity"
             android:noHistory="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -21,12 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".OnBoardingActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".activities.OnBoardingActivity" />
+        <activity android:name=".activities.MainActivity" />
 
-        <receiver android:name=".WakefulReceiver" />
+        <receiver android:name=".receivers.WakefulReceiver" />
         <receiver
-            android:name=".BootReceiver"
+            android:name=".receivers.BootReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>

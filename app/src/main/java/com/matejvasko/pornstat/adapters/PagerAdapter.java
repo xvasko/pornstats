@@ -1,8 +1,11 @@
-package com.matejvasko.pornstat;
+package com.matejvasko.pornstat.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import com.matejvasko.pornstat.fragments.Tab1;
+import com.matejvasko.pornstat.fragments.Tab2;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
 

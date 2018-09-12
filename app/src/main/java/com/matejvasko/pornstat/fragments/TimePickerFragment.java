@@ -1,15 +1,16 @@
-package com.matejvasko.pornstat;
+package com.matejvasko.pornstat.fragments;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.text.format.DateFormat;
 import android.widget.TimePicker;
-import android.widget.Toast;
+
+import com.matejvasko.pornstat.R;
+import com.matejvasko.pornstat.fragments.Tab2;
+import com.matejvasko.pornstat.receivers.WakefulReceiver;
 
 import java.util.Calendar;
 

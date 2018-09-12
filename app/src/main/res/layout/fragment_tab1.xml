@@ -5,42 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".Tab1">
+    tools:context=".fragments.Tab1">
 
-    <RelativeLayout
-        android:id="@+id/goal_relative_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
+    <TextView
+        android:id="@+id/goal_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="31dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Your goal is 3 days"
+        android:textColor="@color/colorWhite"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/goal_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:text="Your goal is 3 days"
-            android:textColor="@color/colorWhite"
-            android:textSize="22sp" />
-    </RelativeLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RelativeLayout
         android:id="@+id/main_relative_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/goal_relative_layout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goal_relative_layout">
+        app:layout_constraintTop_toBottomOf="@+id/goal_text_view">
 
-        <com.matejvasko.pornstat.CircleProgressBar
+        <com.matejvasko.pornstat.utils.CircleProgressBar
             android:id="@+id/custom_progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,261 +69,249 @@
         </RelativeLayout>
     </RelativeLayout>
 
+
     <LinearLayout
         android:id="@+id/small_progress_bars_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/main_relative_layout"
         android:layout_marginTop="16dp"
         android:gravity="center_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_relative_layout">
 
-        <RelativeLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <com.matejvasko.pornstat.CircleProgressBar
+            <com.matejvasko.pornstat.utils.CircleProgressBar
                 android:id="@+id/custom_progressBar1"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 app:progress="0"
                 app:progressBarThickness="4dp" />
 
-            <RelativeLayout
+            <TextView
+                android:id="@+id/num_days_text_view1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true">
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="3"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/custom_progressBar1"
+                app:layout_constraintEnd_toEndOf="@+id/custom_progressBar1"
+                app:layout_constraintStart_toStartOf="@+id/custom_progressBar1"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
 
-                <TextView
-                    android:id="@+id/num_days_text_view1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="3"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="24sp" />
-            </RelativeLayout>
-        </RelativeLayout>
-
-        <RelativeLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp">
 
-            <com.matejvasko.pornstat.CircleProgressBar
+            <com.matejvasko.pornstat.utils.CircleProgressBar
                 android:id="@+id/custom_progressBar2"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 app:progress="0"
                 app:progressBarThickness="4dp" />
 
-            <RelativeLayout
+            <TextView
+                android:id="@+id/num_days_text_view2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true">
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="5"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/custom_progressBar2"
+                app:layout_constraintStart_toStartOf="@+id/custom_progressBar2"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
 
-                <TextView
-                    android:id="@+id/num_days_text_view2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="5"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="24sp" />
-            </RelativeLayout>
-        </RelativeLayout>
-
-        <RelativeLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp">
 
-            <com.matejvasko.pornstat.CircleProgressBar
+            <com.matejvasko.pornstat.utils.CircleProgressBar
                 android:id="@+id/custom_progressBar3"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 app:progress="0"
                 app:progressBarThickness="4dp" />
 
-            <RelativeLayout
+            <TextView
+                android:id="@+id/num_days_text_view3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true">
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="7"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/custom_progressBar3"
+                app:layout_constraintEnd_toEndOf="@+id/custom_progressBar3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
 
-                <TextView
-                    android:id="@+id/num_days_text_view3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="7"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="24sp" />
-            </RelativeLayout>
-        </RelativeLayout>
-
-        <RelativeLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp">
 
-            <com.matejvasko.pornstat.CircleProgressBar
+            <com.matejvasko.pornstat.utils.CircleProgressBar
                 android:id="@+id/custom_progressBar4"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 app:progress="0"
                 app:progressBarThickness="4dp" />
 
-            <RelativeLayout
+            <TextView
+                android:id="@+id/num_days_text_view4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true">
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="14"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/custom_progressBar4"
+                app:layout_constraintStart_toStartOf="@+id/custom_progressBar4"
+                app:layout_constraintTop_toTopOf="@+id/custom_progressBar4" />
+        </android.support.constraint.ConstraintLayout>
 
-                <TextView
-                    android:id="@+id/num_days_text_view4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="14"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="24sp" />
-            </RelativeLayout>
-        </RelativeLayout>
-
-        <RelativeLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp">
 
-            <com.matejvasko.pornstat.CircleProgressBar
+            <com.matejvasko.pornstat.utils.CircleProgressBar
                 android:id="@+id/custom_progressBar5"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 app:progress="0"
                 app:progressBarThickness="4dp" />
 
-            <RelativeLayout
+            <TextView
+                android:id="@+id/num_days_text_view5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true">
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="21"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/custom_progressBar5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/custom_progressBar5" />
 
-                <TextView
-                    android:id="@+id/num_days_text_view5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="21"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="24sp" />
-            </RelativeLayout>
-        </RelativeLayout>
+        </android.support.constraint.ConstraintLayout>
 
-        <RelativeLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp">
 
-            <com.matejvasko.pornstat.CircleProgressBar
+            <com.matejvasko.pornstat.utils.CircleProgressBar
                 android:id="@+id/custom_progressBar6"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 app:progress="0"
                 app:progressBarThickness="4dp" />
 
-            <RelativeLayout
+            <TextView
+                android:id="@+id/num_days_text_view6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true">
-
-                <TextView
-                    android:id="@+id/num_days_text_view6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="28"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="24sp" />
-            </RelativeLayout>
-        </RelativeLayout>
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="28"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/custom_progressBar6"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
 
     </LinearLayout>
 
 
-    <LinearLayout
-        android:id="@+id/buttons_and_question_layout"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/question_text_view"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginStart="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/adView"
+        android:text="Did you watch porn yesterday?"
+        android:textColor="@color/colorWhite"
+        android:textSize="26dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/small_progress_bars_linear_layout">
+        app:layout_constraintTop_toBottomOf="@+id/small_progress_bars_linear_layout" />
 
-        <LinearLayout
-            android:id="@+id/question_linear_layout"
-            android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/date_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="23.4.2018"
+        android:textColor="@color/colorGray"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/question_text_view" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:foregroundGravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date_text_view">
+
+        <Button
+            android:id="@+id/yes_button"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/small_progress_bars_linear_layout"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginRight="4dp"
+            android:text="YES"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/small_progress_bars_linear_layout">
+            tools:layout_editor_absoluteY="16dp" />
 
-            <TextView
-                android:id="@+id/question_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:text="Did you watch porn yesterday?"
-                android:textColor="@color/colorWhite"
-                android:textSize="26sp" />
-
-            <TextView
-                android:id="@+id/date_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="23.4.2018"
-                android:textColor="@color/colorGray"
-                android:textSize="18sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/buttons_layout"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/no_button"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/yes_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginRight="4dp"
-                android:text="YES" />
-
-            <Button
-                android:id="@+id/no_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="4dp"
-                android:text="NO" />
-        </LinearLayout>
-
+            android:layout_marginLeft="4dp"
+            android:text="NO"
+            tools:layout_editor_absoluteX="109dp"
+            tools:layout_editor_absoluteY="16dp" />
     </LinearLayout>
+
 
 
     <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
@@ -343,6 +324,8 @@
         ads:adUnitId="ca-app-pub-9861673834715515/9020705282"
         ads:layout_constraintBottom_toBottomOf="parent"
         ads:layout_constraintEnd_toEndOf="parent"
-        ads:layout_constraintStart_toStartOf="parent"></com.google.android.gms.ads.AdView>
+        ads:layout_constraintStart_toStartOf="parent" />
+
+
 
 </android.support.constraint.ConstraintLayout>

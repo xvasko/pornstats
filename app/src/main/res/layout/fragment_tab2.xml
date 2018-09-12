@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".Tab2">
+    tools:context=".fragments.Tab2">
 
     <LinearLayout
         android:id="@+id/pornpass_streak_linear_layout"
@@ -23,7 +24,7 @@
             android:layout_marginTop="20dp"
             android:text="Total days of your streak!"
             android:textColor="@color/colorWhite"
-            android:textSize="20sp" />
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/total_days_text_view"
@@ -31,7 +32,7 @@
             android:layout_height="wrap_content"
             android:text="13"
             android:textColor="@color/colorWhite"
-            android:textSize="64sp" />
+            android:textSize="64dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -52,7 +53,7 @@
             android:layout_marginTop="20dp"
             android:text="Total days without using pornpass!"
             android:textColor="@color/colorWhite"
-            android:textSize="20sp" />
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/pornpass_days_text_view"
@@ -60,131 +61,143 @@
             android:layout_height="wrap_content"
             android:text="8"
             android:textColor="@color/colorWhite"
-            android:textSize="64sp" />
+            android:textSize="64dp" />
     </LinearLayout>
 
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
+    <LinearLayout
+        android:id="@+id/tickets_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/total_streak_linear_layout">
 
-        <LinearLayout
-            android:id="@+id/tickets_linear_layout"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/ticket_image_view"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/ticket_icon" />
+
+        <TextView
+            android:id="@+id/pornpass_num_text_view"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="330dp">
+            android:layout_marginLeft="10dp"
+            android:text="1"
+            android:textColor="@color/colorWhite"
+            android:textSize="30sp" />
 
-            <ImageView
-                android:id="@+id/ticket_image_view"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true"
-                android:src="@drawable/ticket_icon" />
-
-            <TextView
-                android:id="@+id/pornpass_num_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="1"
-                android:textColor="@color/colorWhite"
-                android:textSize="30sp" />
-
-            <ImageView
-                android:id="@+id/star_image_view"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="20dp"
-                android:src="@drawable/star_icon" />
-
-            <TextView
-                android:id="@+id/stars_num_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="13/100"
-                android:textColor="@color/colorWhite"
-                android:textSize="30sp" />
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:id="@+id/button_linear_layout"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/star_image_view"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tickets_linear_layout"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
+            android:fontFamily="@font/fa_regular_400"
+            android:text="\uf005"
+            android:textSize="32sp"
+            android:textColor="@color/colorWhite"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="20dp"
+             />
+
+        <TextView
+            android:id="@+id/stars_num_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="13/100"
+            android:textColor="@color/colorWhite"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tickets_linear_layout">
+
+        <Button
+            android:id="@+id/alarm_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/fa_regular_400"
+            android:minWidth="0dp"
+            android:text="\uf0f3"
+            android:textSize="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/earn_stars_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/alarm_button"
+            android:layout_alignTop="@+id/alarm_button"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@+id/alarm_button"
+            android:text="EARN STARS"
+            android:textSize="27dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cancel_alarm_button"
+            app:layout_constraintStart_toEndOf="@+id/alarm_button"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/cancel_alarm_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@+id/earn_stars_button"
+            android:fontFamily="@font/fa_regular_400"
+            android:minWidth="0dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:text="\uf1f6"
+            android:textSize="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent">
-
-
-            <Button
-
-                android:id="@+id/alarm_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:minWidth="0dp"
-                android:text="@string/icon_n"
-                android:textSize="32sp" />
-
-
-            <Button
-                android:id="@+id/earn_stars_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/alarm_button"
-                android:layout_alignTop="@+id/alarm_button"
-                android:layout_marginStart="10dp"
-                android:layout_toEndOf="@+id/alarm_button"
-                android:text="EARN STARS" />
-
-            <Button
-                android:id="@+id/cancel_alarm_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/earn_stars_button"
-                android:layout_alignTop="@+id/earn_stars_button"
-                android:layout_centerInParent="true"
-                android:layout_marginStart="10dp"
-                android:layout_toEndOf="@+id/earn_stars_button"
-                android:minWidth="0dp"
-                android:text="@string/icon_n_off"
-                android:textSize="32sp" />
-        </RelativeLayout>
-    </RelativeLayout>
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
 
     <TextView
         android:id="@+id/notification_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Notification set to 8:30"
         android:textColor="@color/colorGray"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
-        app:layout_constraintVertical_bias="0.100000024" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
 
 </android.support.constraint.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.matejvasko.pornstat;
+package com.matejvasko.pornstat.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,7 +7,9 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class SplashScreen extends AppCompatActivity {
+import com.matejvasko.pornstat.R;
+
+public class SplashScreenActivity extends AppCompatActivity {
 
     SharedPreferences pref;
 
@@ -27,10 +29,10 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 if (isNewUser) {
-                    Intent onBoardingActivityIntent = new Intent(SplashScreen.this, OnBoardingActivity.class);
+                    Intent onBoardingActivityIntent = new Intent(SplashScreenActivity.this, OnBoardingActivity.class);
                     startActivity(onBoardingActivityIntent);
                 } else {
-                    Intent mainActivityIntent = new Intent(SplashScreen.this, MainActivity.class);
+                    Intent mainActivityIntent = new Intent(SplashScreenActivity.this, MainActivity.class);
                     startActivity(mainActivityIntent);
                 }
             }

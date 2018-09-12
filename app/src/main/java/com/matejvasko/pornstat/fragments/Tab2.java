@@ -1,4 +1,4 @@
-package com.matejvasko.pornstat;
+package com.matejvasko.pornstat.fragments;
 
 import android.app.DialogFragment;
 import android.content.Context;
@@ -21,6 +21,9 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+import com.matejvasko.pornstat.R;
+import com.matejvasko.pornstat.utils.Utils;
+import com.matejvasko.pornstat.receivers.WakefulReceiver;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -41,8 +44,6 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
     SharedPreferences.Editor editor;
     private RewardedVideoAd mRewardedVideoAd;
 
-    IconManager iconManager;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,9 +54,6 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        iconManager = new IconManager();
-
         pref = getContext().getSharedPreferences("days", MODE_PRIVATE);
         editor = pref.edit();
         mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(getContext());
@@ -69,7 +67,10 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
+            System.out.println("VISIBLE");
             mRewardedVideoAd.loadAd("ca-app-pub-9861673834715515/6206081511", new AdRequest.Builder().build());
+        } else {
+            System.out.println("HIDDEN");
         }
     }
 
@@ -102,7 +103,6 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
         starsNum.setText(Integer.toString(pref.getInt("stars", 0)) + "/100");
 
         alarm = getView().findViewById(R.id.alarm_button);
-        alarm.setTypeface(iconManager.getIcons("fonts/MaterialIcons-Regular.ttf", getContext()));
         alarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,7 +111,6 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
             }
         });
         alarmCancel = getView().findViewById(R.id.cancel_alarm_button);
-        alarmCancel.setTypeface(iconManager.getIcons("fonts/MaterialIcons-Regular.ttf", getContext()));
         alarmCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,6 +124,10 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
         });
 
         updateNotificationTextView(getContext(), pref);
+    }
+
+    public void setText(String s){
+        System.out.println("AAAA " + s);
     }
 
     public static void updateNotificationTextView(Context context, SharedPreferences pref) {
@@ -201,8 +204,6 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
     }
 
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
     }
 
 }

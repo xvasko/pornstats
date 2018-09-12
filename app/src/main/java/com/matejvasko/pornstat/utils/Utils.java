@@ -1,4 +1,4 @@
-package com.matejvasko.pornstat;
+package com.matejvasko.pornstat.utils;
 
 import android.content.Context;
 import android.text.format.DateFormat;

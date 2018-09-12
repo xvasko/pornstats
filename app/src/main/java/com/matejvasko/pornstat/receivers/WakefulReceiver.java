@@ -1,4 +1,4 @@
-package com.matejvasko.pornstat;
+package com.matejvasko.pornstat.receivers;
 
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
@@ -13,6 +13,9 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+
+import com.matejvasko.pornstat.R;
+import com.matejvasko.pornstat.activities.MainActivity;
 
 import java.util.Calendar;
 

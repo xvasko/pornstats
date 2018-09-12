@@ -1,8 +1,7 @@
-package com.matejvasko.pornstat;
+package com.matejvasko.pornstat.activities;
 
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,9 +9,14 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import com.matejvasko.pornstat.adapters.PagerAdapter;
+import com.matejvasko.pornstat.R;
+import com.matejvasko.pornstat.fragments.Tab1;
+import com.matejvasko.pornstat.fragments.Tab2;
+
 public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentInteractionListener, Tab2.OnFragmentInteractionListener {
 
-    static private TabLayout tabLayout;
+    private TabLayout tabLayout;
 
     SharedPreferences pref;
 
@@ -23,7 +27,6 @@ public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentIn
 
         pref = getApplicationContext().getSharedPreferences("days", MODE_PRIVATE);
 
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
         }
@@ -32,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentIn
         tabLayout.addTab(tabLayout.newTab().setText("Main"));
         tabLayout.addTab(tabLayout.newTab().setText("Statistics"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-        updateSelectedTabIndicatorColor(getResources(), pref.getInt("totalDays", 0));
+        updateSelectedTabIndicatorColor(getResources(), pref.getInt("totalDays", 0), tabLayout);
 
         final ViewPager viewPager = findViewById(R.id.pager);
         final PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
@@ -56,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentIn
         });
     }
 
-    public static void updateSelectedTabIndicatorColor(Resources resources, int totalDays) {
+    static public void updateSelectedTabIndicatorColor(Resources resources, int totalDays, TabLayout tabLayout) {
         if (totalDays <= 3) {
             tabLayout.setSelectedTabIndicatorColor(resources.getColor(R.color.colorCircleProgressBar1));
         } else if (totalDays <= 8) {
@@ -72,8 +75,4 @@ public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentIn
         }
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
 }

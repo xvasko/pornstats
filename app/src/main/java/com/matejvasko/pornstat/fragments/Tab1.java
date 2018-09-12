@@ -1,19 +1,16 @@
-package com.matejvasko.pornstat;
+package com.matejvasko.pornstat.fragments;
 
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AlertDialog;
 import android.text.Html;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -22,29 +19,33 @@ import android.widget.TextView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.matejvasko.pornstat.R;
+import com.matejvasko.pornstat.activities.MainActivity;
+import com.matejvasko.pornstat.utils.CircleProgressBar;
 
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static android.content.Context.MODE_PRIVATE;
 
 public class Tab1 extends Fragment {
 
-    TextView goal;
-    TextView daysOfCurrentChallenge;
-    TextView date;
-    TextView question;
-    CircleProgressBar circleProgressBar;
-    CircleProgressBar circleProgressBar1;
-    CircleProgressBar circleProgressBar2;
-    CircleProgressBar circleProgressBar3;
-    CircleProgressBar circleProgressBar4;
-    CircleProgressBar circleProgressBar5;
-    CircleProgressBar circleProgressBar6;
-    Button yesButton;
-    Button noButton;
+    TextView goal,
+            daysOfCurrentChallenge,
+            date,
+            question;
+    CircleProgressBar circleProgressBar,
+            circleProgressBar1,
+            circleProgressBar2,
+            circleProgressBar3,
+            circleProgressBar4,
+            circleProgressBar5,
+            circleProgressBar6;
+    Button yesButton,
+            noButton;
 
     Handler handle = new Handler();
     int[] days    = new int[] {0, 0, 0,  0,  0,  0};
@@ -52,8 +53,6 @@ public class Tab1 extends Fragment {
 
     SharedPreferences pref;
     SharedPreferences.Editor editor;
-
-    private AdView mAdView;
 
     Calendar calendar;
     boolean wasAnsweredToday;
@@ -75,8 +74,7 @@ public class Tab1 extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_tab1, container, false);
     }
 
@@ -114,7 +112,7 @@ public class Tab1 extends Fragment {
 
         MobileAds.initialize(getContext(), "ca-app-pub-9861673834715515~9871538949");
 
-        mAdView = getActivity().findViewById(R.id.adView);
+        AdView mAdView = getActivity().findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
@@ -254,7 +252,7 @@ public class Tab1 extends Fragment {
         circleProgressBar4.setProgressWithAnimation(0);
         circleProgressBar5.setProgressWithAnimation(0);
         circleProgressBar6.setProgressWithAnimation(0);
-        MainActivity.updateSelectedTabIndicatorColor(getResources(), pref.getInt("totalDays", 0));
+        MainActivity.updateSelectedTabIndicatorColor(getResources(), pref.getInt("totalDays", 0), (TabLayout) getActivity().findViewById(R.id.tab_layout));
     }
 
     private void addSuccessfulDay() {
@@ -275,6 +273,7 @@ public class Tab1 extends Fragment {
         editor.putInt("totalDays", pref.getInt("totalDays", 0) + 1);
         editor.putInt("pornpassDays", pref.getInt("pornpassDays", 0) + 1);
         editor.commit();
+
         Tab2.totalDays.setText(Integer.toString(pref.getInt("totalDays", 0)));
         Tab2.pornpassDays.setText(Integer.toString(pref.getInt("pornpassDays", 0)));
 
@@ -292,7 +291,7 @@ public class Tab1 extends Fragment {
         System.out.println("MIDNIGHT:" + pref.getLong("midnight", 0));
         showTomorrowUI(true);
 
-        MainActivity.updateSelectedTabIndicatorColor(getResources(), pref.getInt("totalDays", 0));
+        MainActivity.updateSelectedTabIndicatorColor(getResources(), pref.getInt("totalDays", 0), (TabLayout) getActivity().findViewById(R.id.tab_layout));
     }
 
     private void showTodayUI(){
@@ -303,9 +302,7 @@ public class Tab1 extends Fragment {
         myDate.setTime(myDate.getTime() - TimeUnit.DAYS.toMillis(1));
         date.setText(df.format(myDate));
         yesButton.setVisibility(View.VISIBLE);
-//        yesButton.setTextColor(getResources().getColor(R.color.colorWhite));
         noButton.setVisibility(View.VISIBLE);
-//        noButton.setTextColor(getResources().getColor(R.color.colorWhite));
     }
 
     private void showTomorrowUI(boolean wasSuccessful){
@@ -318,9 +315,7 @@ public class Tab1 extends Fragment {
         date.setText("Come back tomorrow");
         question.setText(text);
         yesButton.setVisibility(View.INVISIBLE);
-//        yesButton.setTextColor(getResources().getColor(R.color.colorWhiteTransparent));
         noButton.setVisibility(View.INVISIBLE);
-//        noButton.setTextColor(getResources().getColor(R.color.colorWhiteTransparent));
     }
 
     private void addSuccessfulDay(final int i) {
@@ -453,9 +448,7 @@ public class Tab1 extends Fragment {
         alertDialog.show();
     }
 
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
-    }
+
 
     private int getCurrentChallenge() {
         for (int i = 0; i < days.length; i++) {
@@ -466,4 +459,6 @@ public class Tab1 extends Fragment {
         return 28;
     }
 
+    public interface OnFragmentInteractionListener {
+    }
 }
