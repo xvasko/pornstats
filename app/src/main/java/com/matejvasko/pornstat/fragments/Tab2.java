@@ -7,7 +7,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +25,7 @@ import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.matejvasko.pornstat.R;
+import com.matejvasko.pornstat.activities.MainActivity;
 import com.matejvasko.pornstat.utils.Utils;
 import com.matejvasko.pornstat.receivers.WakefulReceiver;
 
@@ -30,14 +34,8 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class Tab2 extends Fragment implements RewardedVideoAdListener {
 
-    Button earnStars;
-    Button alarm;
-    Button alarmCancel;
-
-    static TextView totalDays;
-    static TextView pornpassDays;
-    static TextView pornpassNum;
-    static TextView starsNum;
+    Button earnStars, alarm, alarmCancel;
+    TextView totalDays, pornpassDays, pornpassNum, starsNum;
     static TextView notification;
 
     SharedPreferences pref;
@@ -45,8 +43,7 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
     private RewardedVideoAd mRewardedVideoAd;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_tab2, container, false);
     }
@@ -63,14 +60,19 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
         prepareUI();
 
     }
+
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
             System.out.println("VISIBLE");
+            totalDays.setText(Integer.toString(pref.getInt("totalDays", 0)));
+            pornpassDays.setText(Integer.toString(pref.getInt("pornpassDays", 0)));
+            pornpassNum.setText(Integer.toString(pref.getInt("pornpasses", 1)));
             mRewardedVideoAd.loadAd("ca-app-pub-9861673834715515/6206081511", new AdRequest.Builder().build());
         } else {
             System.out.println("HIDDEN");
+
         }
     }
 

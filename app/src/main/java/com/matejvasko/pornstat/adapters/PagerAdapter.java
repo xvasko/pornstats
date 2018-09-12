@@ -6,10 +6,11 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.matejvasko.pornstat.fragments.Tab1;
 import com.matejvasko.pornstat.fragments.Tab2;
+import com.matejvasko.pornstat.fragments.Tab3;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
 
-    int numOfTabs;
+    private int numOfTabs;
 
     public PagerAdapter(FragmentManager fm, int numOfTabs) {
         super(fm);
@@ -23,6 +24,8 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
                 return new Tab1();
             case 1:
                 return new Tab2();
+            case 2:
+                return new Tab3();
             default:
                 return null;
         }

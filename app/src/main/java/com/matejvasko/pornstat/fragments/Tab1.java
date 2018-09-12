@@ -26,7 +26,6 @@ import com.matejvasko.pornstat.utils.CircleProgressBar;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -274,9 +273,6 @@ public class Tab1 extends Fragment {
         editor.putInt("pornpassDays", pref.getInt("pornpassDays", 0) + 1);
         editor.commit();
 
-        Tab2.totalDays.setText(Integer.toString(pref.getInt("totalDays", 0)));
-        Tab2.pornpassDays.setText(Integer.toString(pref.getInt("pornpassDays", 0)));
-
         if (pref.getInt("totalDays", 0) > 78) {
             int totalDays = pref.getInt("totalDays", 0);
             circleProgressBar.setProgressWithAnimation((100f / 28) * ((totalDays - 78) % 28));
@@ -289,7 +285,8 @@ public class Tab1 extends Fragment {
         editor.putBoolean("wasYesterdaySuccessful", true);
         editor.commit();
         System.out.println("MIDNIGHT:" + pref.getLong("midnight", 0));
-        showTomorrowUI(true);
+        //TODO HERE
+        //showTomorrowUI(true);
 
         MainActivity.updateSelectedTabIndicatorColor(getResources(), pref.getInt("totalDays", 0), (TabLayout) getActivity().findViewById(R.id.tab_layout));
     }
@@ -408,10 +405,6 @@ public class Tab1 extends Fragment {
                         editor.commit();
                         System.out.println("MIDNIGHT:" + pref.getLong("midnight", 0));
                         showTomorrowUI(true);
-
-                        Tab2.pornpassDays.setText(Integer.toString(pref.getInt("pornpassDays", 0)));
-                        Tab2.pornpassNum .setText(Integer.toString(pref.getInt("pornpasses", 1)));
-
                     }
                 })
                 .setNegativeButton("Don't use", new DialogInterface.OnClickListener() {
@@ -426,9 +419,6 @@ public class Tab1 extends Fragment {
                         editor.commit();
                         System.out.println("MIDNIGHT:" + pref.getLong("midnight", 0));
                         showTomorrowUI(false);
-
-                        Tab2.totalDays.setText(Integer.toString(pref.getInt("totalDays", 0)));
-                        Tab2.pornpassDays.setText(Integer.toString(pref.getInt("pornpassDays", 0)));
                         resetUI();
                     }
                 }).create();
@@ -448,8 +438,6 @@ public class Tab1 extends Fragment {
         alertDialog.show();
     }
 
-
-
     private int getCurrentChallenge() {
         for (int i = 0; i < days.length; i++) {
             if (days[i] != daysCap[i]) {
@@ -459,6 +447,5 @@ public class Tab1 extends Fragment {
         return 28;
     }
 
-    public interface OnFragmentInteractionListener {
-    }
+    public interface OnFragmentInteractionListener {}
 }

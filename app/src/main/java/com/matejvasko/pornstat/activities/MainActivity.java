@@ -2,21 +2,18 @@ package com.matejvasko.pornstat.activities;
 
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.matejvasko.pornstat.adapters.PagerAdapter;
 import com.matejvasko.pornstat.R;
+import com.matejvasko.pornstat.adapters.PagerAdapter;
 import com.matejvasko.pornstat.fragments.Tab1;
 import com.matejvasko.pornstat.fragments.Tab2;
 
 public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentInteractionListener, Tab2.OnFragmentInteractionListener {
-
-    private TabLayout tabLayout;
 
     SharedPreferences pref;
 
@@ -31,9 +28,10 @@ public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentIn
             getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimaryDark));
         }
 
-        tabLayout = findViewById(R.id.tab_layout);
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Main"));
-        tabLayout.addTab(tabLayout.newTab().setText("Statistics"));
+        tabLayout.addTab(tabLayout.newTab().setText("Stats"));
+        tabLayout.addTab(tabLayout.newTab().setText("Badges"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         updateSelectedTabIndicatorColor(getResources(), pref.getInt("totalDays", 0), tabLayout);
 
