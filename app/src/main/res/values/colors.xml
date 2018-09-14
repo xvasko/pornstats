@@ -2,6 +2,7 @@
 <resources>
     <color name="colorPrimary">#16222A</color>
     <color name="colorPrimaryDark">#101920</color>
+    <color name="colorScrollBar">#1f343e</color>
     <color name="colorAccent">#c42d2d</color>
     <color name="colorCircleProgressBar1">#FB8C00</color>
     <color name="colorCircleProgressBar2">#F57C00</color>
