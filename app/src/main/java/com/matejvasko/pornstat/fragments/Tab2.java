@@ -65,14 +65,10 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
-            System.out.println("VISIBLE");
             totalDays.setText(Integer.toString(pref.getInt("totalDays", 0)));
             pornpassDays.setText(Integer.toString(pref.getInt("pornpassDays", 0)));
             pornpassNum.setText(Integer.toString(pref.getInt("pornpasses", 1)));
             mRewardedVideoAd.loadAd("ca-app-pub-9861673834715515/6206081511", new AdRequest.Builder().build());
-        } else {
-            System.out.println("HIDDEN");
-
         }
     }
 

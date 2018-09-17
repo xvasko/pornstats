@@ -51,7 +51,7 @@
                             android:id="@+id/imageView1"
                             android:layout_width="match_parent"
                             android:layout_height="103dp"
-                            android:src="@drawable/badge1"
+                            android:src="@drawable/locked"
                             app:layout_constraintDimensionRatio="1:1"/>
 
                         <TextView
@@ -82,7 +82,7 @@
                             android:id="@+id/imageView2"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:src="@drawable/badge2"
+                            android:src="@drawable/locked"
                             app:layout_constraintDimensionRatio="1:1" />
 
                         <TextView
@@ -112,7 +112,7 @@
                             android:id="@+id/imageView3"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:src="@drawable/badge3"
+                            android:src="@drawable/locked"
                             app:layout_constraintDimensionRatio="1:1" />
 
                         <TextView
@@ -146,7 +146,7 @@
                             android:id="@+id/imageView4"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:src="@drawable/badge4"
+                            android:src="@drawable/locked"
                             app:layout_constraintDimensionRatio="1:1" />
 
                         <TextView
@@ -177,7 +177,7 @@
                             android:id="@+id/imageView5"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:src="@drawable/badge5"
+                            android:src="@drawable/locked"
                             app:layout_constraintDimensionRatio="1:1" />
 
                         <TextView
@@ -207,7 +207,7 @@
                             android:id="@+id/imageView6"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:src="@drawable/badge6"
+                            android:src="@drawable/locked"
                             app:layout_constraintDimensionRatio="1:1" />
 
                         <TextView
@@ -241,7 +241,7 @@
                             android:id="@+id/imageView7"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:src="@drawable/badge7"
+                            android:src="@drawable/locked"
                             app:layout_constraintDimensionRatio="1:1" />
 
                         <TextView
@@ -272,7 +272,7 @@
                             android:id="@+id/imageView8"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:src="@drawable/badge8"
+                            android:src="@drawable/locked"
                             app:layout_constraintDimensionRatio="1:1" />
 
                         <TextView
@@ -327,7 +327,7 @@
                             android:id="@+id/imageViewChallenge1"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:src="@drawable/m1"
+                            android:src="@drawable/locked"
                             app:layout_constraintDimensionRatio="1:1" />
 
                         <TextView
@@ -358,7 +358,7 @@
                             android:id="@+id/imageViewChallenge2"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:src="@drawable/m2"
+                            android:src="@drawable/locked"
                             app:layout_constraintDimensionRatio="1:1" />
 
                         <TextView
@@ -388,7 +388,7 @@
                             android:id="@+id/imageViewChallenge3"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:src="@drawable/m3"
+                            android:src="@drawable/locked"
                             app:layout_constraintDimensionRatio="1:1" />
 
                         <TextView
@@ -421,7 +421,7 @@
                             android:id="@+id/imageViewChallenge4"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:src="@drawable/m4"
+                            android:src="@drawable/locked"
                             app:layout_constraintDimensionRatio="1:1" />
 
                         <TextView
@@ -452,7 +452,7 @@
                             android:id="@+id/imageViewChallenge5"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:src="@drawable/m5"
+                            android:src="@drawable/locked"
                             app:layout_constraintDimensionRatio="1:1" />
 
                         <TextView
@@ -482,7 +482,7 @@
                             android:id="@+id/imageViewChallenge6"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:src="@drawable/m6"
+                            android:src="@drawable/locked"
                             app:layout_constraintDimensionRatio="1:1" />
 
                         <TextView
@@ -530,6 +530,7 @@
                             app:layout_constraintDimensionRatio="1:1" />
 
                         <TextView
+                            android:id="@+id/textViewSecret1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
@@ -561,6 +562,7 @@
                             app:layout_constraintDimensionRatio="1:1" />
 
                         <TextView
+                            android:id="@+id/textViewSecret2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
@@ -591,6 +593,7 @@
                             app:layout_constraintDimensionRatio="1:1" />
 
                         <TextView
+                            android:id="@+id/textViewSecret3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"

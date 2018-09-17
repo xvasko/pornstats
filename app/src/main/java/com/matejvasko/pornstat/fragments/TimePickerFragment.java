@@ -59,6 +59,7 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         editor.putInt("hour", hourOfDay);
         editor.putInt("minute", minute);
+        editor.putBoolean("secretBadge2", true);
         editor.commit();
         wakefulReceiver = new WakefulReceiver();
         wakefulReceiver.setAlarm(getActivity().getApplicationContext(),false);

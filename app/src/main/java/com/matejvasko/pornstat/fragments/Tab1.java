@@ -85,6 +85,13 @@ public class Tab1 extends Fragment {
         editor = pref.edit();
         wasAnsweredToday = pref.getBoolean("wasAnsweredToday", false);
 
+        // To keep badges even if you reset progress for users active before this update
+        if (    (pref.getInt("maxHotStreak", 0) < 79) &&
+                (pref.getInt("maxHotStreak", 0) < pref.getInt("totalDays", 0))) {
+            editor.putInt("maxHotStreak", pref.getInt("totalDays", 0));
+            editor.apply();
+        }
+
         calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, 0);
         calendar.set(Calendar.MINUTE, 0);
@@ -135,7 +142,9 @@ public class Tab1 extends Fragment {
                 editor.commit();
                 showTodayUI();
             } else {
-                showTomorrowUI(pref.getBoolean("wasYesterdaySuccessful", true));
+                showTodayUI();
+                //TODO here
+//                showTomorrowUI(pref.getBoolean("wasYesterdaySuccessful", true));
             }
         } else {
             showTodayUI();
@@ -273,6 +282,13 @@ public class Tab1 extends Fragment {
         editor.putInt("pornpassDays", pref.getInt("pornpassDays", 0) + 1);
         editor.commit();
 
+        // To keep badges even if you reset progress
+        if (    (pref.getInt("maxHotStreak", 0) < 79) &&
+                (pref.getInt("maxHotStreak", 0) < pref.getInt("totalDays", 0))) {
+            editor.putInt("maxHotStreak", pref.getInt("totalDays", 0));
+            editor.commit();
+        }
+
         if (pref.getInt("totalDays", 0) > 78) {
             int totalDays = pref.getInt("totalDays", 0);
             circleProgressBar.setProgressWithAnimation((100f / 28) * ((totalDays - 78) % 28));
@@ -402,6 +418,7 @@ public class Tab1 extends Fragment {
                         editor.putBoolean("wasAnsweredToday", true);
                         editor.putLong("midnight", calendar.getTime().getTime());
                         editor.putBoolean("wasYesterdaySuccessful", true);
+                        editor.putBoolean("secretBadge3", true);
                         editor.commit();
                         System.out.println("MIDNIGHT:" + pref.getLong("midnight", 0));
                         showTomorrowUI(true);
@@ -416,6 +433,7 @@ public class Tab1 extends Fragment {
                         editor.putBoolean("wasAnsweredToday", true);
                         editor.putLong("midnight", calendar.getTime().getTime());
                         editor.putBoolean("wasYesterdaySuccessful", false);
+                        editor.putBoolean("secretBadge1", true);
                         editor.commit();
                         System.out.println("MIDNIGHT:" + pref.getLong("midnight", 0));
                         showTomorrowUI(false);
