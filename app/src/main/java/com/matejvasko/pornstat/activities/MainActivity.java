@@ -8,6 +8,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import com.google.android.gms.ads.MobileAds;
 import com.matejvasko.pornstat.R;
 import com.matejvasko.pornstat.adapters.PagerAdapter;
 import com.matejvasko.pornstat.fragments.Tab1;
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentIn
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        MobileAds.initialize(this, "ca-app-pub-9861673834715515~9871538949");
 
         pref = getApplicationContext().getSharedPreferences("days", MODE_PRIVATE);
 

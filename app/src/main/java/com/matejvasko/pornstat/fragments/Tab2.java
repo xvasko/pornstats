@@ -3,14 +3,10 @@ package com.matejvasko.pornstat.fragments;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,9 +21,8 @@ import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.matejvasko.pornstat.R;
-import com.matejvasko.pornstat.activities.MainActivity;
-import com.matejvasko.pornstat.utils.Utils;
 import com.matejvasko.pornstat.receivers.WakefulReceiver;
+import com.matejvasko.pornstat.utils.Utils;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -45,6 +40,8 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(getContext());
+        mRewardedVideoAd.setRewardedVideoAdListener(this);
         return inflater.inflate(R.layout.fragment_tab2, container, false);
     }
 
@@ -53,9 +50,6 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
         super.onViewCreated(view, savedInstanceState);
         pref = getContext().getSharedPreferences("days", MODE_PRIVATE);
         editor = pref.edit();
-        mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(getContext());
-        mRewardedVideoAd.setRewardedVideoAdListener(this);
-        mRewardedVideoAd.loadAd("ca-app-pub-9861673834715515/6206081511", new AdRequest.Builder().build());
 
         prepareUI();
 
@@ -87,11 +81,11 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
             public void onClick(View view) {
                 earnStars.setEnabled(false);
                 earnStars.setTextColor(getResources().getColor(R.color.colorWhiteTransparent));
-//                if (mRewardedVideoAd.isLoaded()) {
+                if (mRewardedVideoAd.isLoaded()) {
                     mRewardedVideoAd.show();
-//                } else {
-//                    System.out.println("add is not loaded");
-//                }
+                } else {
+                    System.out.println("add is not loaded");
+                }
             }
         });
 
@@ -124,10 +118,6 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
         updateNotificationTextView(getContext(), pref);
     }
 
-    public void setText(String s){
-        System.out.println("AAAA " + s);
-    }
-
     public static void updateNotificationTextView(Context context, SharedPreferences pref) {
         int hour = pref.getInt("hour", -1);
         int minute = pref.getInt("minute", -1);
@@ -147,12 +137,31 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
         }
     }
 
+    @Override
+    public void onResume() {
+        mRewardedVideoAd.resume(getContext());
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        mRewardedVideoAd.pause(getContext());
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        mRewardedVideoAd.destroy(getContext());
+        super.onDestroy();
+    }
+
 
     @Override
     public void onRewardedVideoAdLoaded() {
         earnStars.setEnabled(true);
         earnStars.setTextColor(getResources().getColor(R.color.colorWhite));
         Log.i("MainActivity", "An ad has loaded.");
+        System.out.println(mRewardedVideoAd.isLoaded() + " IS LOADED:");
     }
 
     @Override
@@ -193,7 +202,7 @@ public class Tab2 extends Fragment implements RewardedVideoAdListener {
 
     @Override
     public void onRewardedVideoAdFailedToLoad(int i) {
-
+        System.out.println("onRewardedVideoAdFailedToLoad: " + i);
     }
 
     @Override

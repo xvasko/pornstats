@@ -1,8 +1,6 @@
 package com.matejvasko.pornstat.fragments;
 
-import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,10 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.MobileAds;
 import com.matejvasko.pornstat.R;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -56,7 +51,7 @@ public class Tab3 extends Fragment {
             try {
                 if (pref.getBoolean("secretBadge2", false)) {
                     ((ImageView) getActivity().findViewById(R.id.imageViewSecret2)).setImageResource(R.drawable.s2);
-                    ((TextView) getActivity().findViewById(R.id.textViewSecret2)).setText("Change notification time!");
+                    ((TextView) getActivity().findViewById(R.id.textViewSecret2)).setText("Change the notification time!");
                 }
             } catch (NullPointerException e) {
                 System.out.println("NullPointer - pref not initialized yet");

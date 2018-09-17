@@ -18,7 +18,6 @@ import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
 import com.matejvasko.pornstat.R;
 import com.matejvasko.pornstat.activities.MainActivity;
 import com.matejvasko.pornstat.utils.CircleProgressBar;
@@ -116,8 +115,6 @@ public class Tab1 extends Fragment {
             }
         });
 
-        MobileAds.initialize(getContext(), "ca-app-pub-9861673834715515~9871538949");
-
         AdView mAdView = getActivity().findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
@@ -142,9 +139,7 @@ public class Tab1 extends Fragment {
                 editor.commit();
                 showTodayUI();
             } else {
-                showTodayUI();
-                //TODO here
-//                showTomorrowUI(pref.getBoolean("wasYesterdaySuccessful", true));
+                showTomorrowUI(pref.getBoolean("wasYesterdaySuccessful", true));
             }
         } else {
             showTodayUI();
@@ -301,8 +296,7 @@ public class Tab1 extends Fragment {
         editor.putBoolean("wasYesterdaySuccessful", true);
         editor.commit();
         System.out.println("MIDNIGHT:" + pref.getLong("midnight", 0));
-        //TODO HERE
-        //showTomorrowUI(true);
+        showTomorrowUI(true);
 
         MainActivity.updateSelectedTabIndicatorColor(getResources(), pref.getInt("totalDays", 0), (TabLayout) getActivity().findViewById(R.id.tab_layout));
     }
