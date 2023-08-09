@@ -1,1 +1,1 @@
-Android app available via [playstore](https://play.google.com/store/apps/details?id=com.matejvasko.pornstat)
+Android application helping to overcome porn addiction.
